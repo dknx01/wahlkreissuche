@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'register'|trans({}, 'register') }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error|trans({}, 'user') }}</div>
+        {% endfor %}
+        {% if app.user is null %}
+            <div class="alert alert-warning" role="alert">
+                {{ 'not_logged_in' |trans({}, 'security') }}
+            </div>
+        {% else %}
+            {% if not app.user.verified %}
+                <div class="alert alert-warning" role="alert">
+                    {{ 'access_denied.not_verified' |trans({}, 'security') }}
+                </div>
+            {% endif %}
+            {% if not app.user.active and app.user.verified %}
+                <div class="alert alert-warning" role="alert">
+                    {{ 'access_denied.not_active' |trans({}, 'security') }}
+                </div>
+            {% endif %}
+            {% if app.user.active and app.user.verified %}
+                <div class="alert alert-warning" role="alert">
+                    {{ 'access_denied.generic' |trans({}, 'security') }}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

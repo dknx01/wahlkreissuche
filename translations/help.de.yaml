@@ -1,0 +1,84 @@
+go_there: Aufrufen
+page_title:
+  overview: Hilfe-Seite
+search:
+  title: 'Suche'
+  description: 'Hinweise und Beschreibung der Suchfunktionalität.'
+  content: |
+    Die Suche erfolgt sowohl für die Bundestagswahlkreise, als auch für die Abgeordnetenhauswahlkreise in Berlin (wenn Berlin ausgewählt wurde)
+    <br>
+    Die Suche erfolgt anhand der Geokoordinaten der Adresse. Es werden dann die Wahlkreise gesucht, in welchen die Adresse liegt.
+    <br>
+    Die Suche sollte möglichst eine vollständige Adresse bekommen. Gerade bei Orten, die es mehrfach in Deutschland gibt, ist die PLZ wichtig.
+  overview:
+    generic: 'Allgemein'
+    data: 'Daten'
+    geo_coordinates: 'Geokoordinaten'
+user:
+  title: 'User'
+  description: 'Hinweise für Benutzer und Benutzerinnen und deren "persönlicher" Bereich (z.B. Passwort verwalten).'
+  register:
+    title: Anmeldung
+    content: |
+      Für die Anmeldung ist eine E-Mail-Adresse notwendig. An diese wird eine E-Mail mit einem Bestätigungslink geschickt, um sicher zu stellen, dass es diese E-Mail-Adresse wirklich gibt.
+      
+      Es wird weiterhin ein Benutzername und ein Passwort benötigt.
+  login:
+    title: 'Login'
+    content: |
+      Für den Login gibt es zwei Möglichkeiten:
+      <ul>
+      <li> Login via Benutzername und Passwort</li>
+      <li> Login via Login-Link</li>
+      </ul>
+      <br>
+      <br>
+      <h4>Login via Benutzername und Passwort</h4><br>
+      Zum Anmelden wird der Benutzername und das Passwort genommen, welches bei der Anmeldung gewählt wurde.
+      <br><br>
+      <h4>Login via Login-Link</h4><br>
+      Zum Anmelden wird die E-Mail-Adresse genommen, welches bei der Anmeldung benutzt wurde. an diese wird ein Link geschickt, der eine gewisse Zeit gültig ist.
+      Der Link loggt einen Benutzer automatisch ein und ist danach nicht mehr gültig. Damit kann man sich auch einloggen, wenn man die Zugangsdaten nicht mehr hat.
+  password:
+    title: 'Passwort'
+    content: |
+      Das Passwort kann von eingeloggten Benutzern in ihrem persönlichen Bereich geändert werden.
+  posters:
+    title: 'Plakate'
+    content: |
+      Eingeloggte Benutzer können Wahlplakate auf der Karte eintragen.<br>
+      <br>
+      <h4>Gewünschte Plakatorte</h4>
+      Gewünschte Plakatorte sind Orte, an denen man gern ein Plakat aufhängen möchte. Dies kann hilfreich sein, um Orte vorher abzuklären und eventuelle Touren zum Aufhängen planen.<br> 
+      <br>
+      <h4>Plakatorte</h4>
+      Plakatorte sind orte, an denen Plakate aufgehängt wurden.<br>
+      <br>
+      Plakate können als "nicht mehr hängend" markiert werden, und werden kann nicht mehr auf der Karte angezeigt. Dies kann zum einen sein, wenn das Plkaat abgehängt wurde, es ein falscher Ort war oder es nicht mehr dort hängt.
+maps:
+  title: 'Karten'
+  description: 'Hinweise und Beschreibung der Karten.'
+  btw:
+    title: 'Bundestagswahlkreise'
+    content: |
+      Unter dem Menüpunkt "BTW-Wahlkreise" sind Karten verfügbar, um die Bundestagswahlkreise deutschlandweit sehen zu können.<br>
+      Einmal als Karte von gesamt Deutschland und dann nur für jedes einzelne Bundesland.<br>
+      <br>
+      Wenn man mit der Maus über einen Wahlkreis geht, wird ein Hinweistext mit dem Namen des Wahlkreises und der Wahlkreisnummer angezeigt.
+posters:
+  title: 'Plakate'
+  description: 'Hinweise und Beschreibung der Funktionalität für Wahlplakate.'
+admin:
+  title: 'Admin-Bereich'
+  description: 'Hinweise und Beschreibung des Admin-Bereiches.'
+misc:
+  title: 'Verschiedenes'
+  description: 'Hinweise und beschreibungen, die nicht in die anderen Bereiche passen.'
+data:
+  content: |
+    Die Daten für die Wahlkreise stammen aus den offiziellen und öffentlich zugänglichen Daten der entsprechenden Behörden, siehe <a href="{{link}}">Quellen</a>.
+    <br>
+    Die Daten sind auch aim Quell-Code hinterlegt und können aktualisiert werden.
+geo:
+  content: |
+    Die Geokoordinaten zu einer Adresse werden über OpenStreetmaps und Nominatim geholt.

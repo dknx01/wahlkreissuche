@@ -1,0 +1,34 @@
+parameters:
+  ###
+  # Login link config
+  ###
+  # lifetime of the login link in the emails in seconds
+  login-link_lifetime: 3600
+  # lifetime of the cached entries for login links
+  login-link_cache_lifetime: 3660
+  # number of how many times a login link can be used
+  login-link_max_usage: 1
+  # from address for the login link email
+  login-link_email_from: 'no-reply@localhost.test'
+
+  ###
+  # Registration config
+  ###
+  # from address for the login link email
+  registration_email_from: 'no-reply@wahlkreissuche'
+
+  ###
+  # Matomo config
+  ###
+  # enabled Matomo tracking
+  matomo_enabled: false
+  # use Matomo tracking on server side and not via javaScript
+  matomo_server_side: true
+  # matomo no script image url
+  matomo_noscript_img: '//domain.test/piwik/matomo.php?idsite=2&amp;rec=1'
+  # matomo domain for cookie in javascript
+  matomo_cookie_domain: '*.wahlkreissuche'
+  # matomo domain in javascript
+  matomo_domain: '//www.domain.test/piwik/'
+  # matomo domain in javascript
+  matomo_tracker_url: 'matomo.php'

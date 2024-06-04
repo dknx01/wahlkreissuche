@@ -1,0 +1,44 @@
+body {
+    background-color: white;
+}
+#map {
+    height: 650px;
+    width: 100%;
+}
+#map-rs {
+    width: 100px;
+    height: 200px;
+}
+
+.mycluster {
+    background-image: url("../../public/favicon.png");
+}
+.mycluster > span {
+    font-weight: bold;
+    /* color: #FFFFFF; */
+    text-shadow: 2px 2px 2px white;
+    /* background-color: grey; */
+    /* border-radius: 5px; */
+    /* padding-right: 3px; */
+    /* padding-left: 2px; */
+    position: absolute;
+    top: 57%;
+    left: 40%;
+}
+
+.mycluster-wish {
+    background-image: url("../../public/static-images/wish_place.png");
+    background-repeat: no-repeat;
+}
+.mycluster-wish > span {
+    font-weight: bold;
+    /* color: #FFFFFF; */
+    text-shadow: 2px 2px 2px white;
+    /* background-color: grey; */
+    /* border-radius: 5px; */
+    /* padding-right: 3px; */
+    /* padding-left: 2px; */
+    position: absolute;
+    top: 53%;
+    left: 50%;
+}

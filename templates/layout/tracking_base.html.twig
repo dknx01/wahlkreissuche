@@ -1,0 +1,5 @@
+{% if trackingConfig.serverSide %}
+    {{ include('layout/tracking_serverside.html.twig') }}
+{% else %}
+    {{ include('layout/tracking.html.twig') }}
+{% endif %}

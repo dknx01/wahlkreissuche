@@ -1,0 +1,10 @@
+Username: Benutzername
+Password: Passwort
+Email: E-Mail-Adresse
+Agree terms: 'Nutzungsbedingungen zustimmen'
+register: 'Registrieren'
+registration: 'Registrierung'
+Read Agree terms: 'Nutzungsbestimmungen lesen'
+registered:
+  page_title: 'E-mail-Adresse verifiziert'
+  message: 'Diese E-Mail-Adresse wurde verifiziert.'

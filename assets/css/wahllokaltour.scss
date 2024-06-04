@@ -1,0 +1,105 @@
+@mixin position_t5_l19 {
+  position: absolute;
+  top: 5%;
+  left: 19%;
+}@mixin position_t5_l36 {
+  position: absolute;
+  top: 5%;
+  left: 36%;
+}
+@mixin white-black {
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  /* background-color: grey; */
+  /* border-radius: 5px; */
+  /* padding-right: 3px; */
+  /* padding-left: 2px; */
+}
+@mixin red-white {
+  font-weight: 900;
+  color: red;
+  text-shadow: 2px 2px 2px white;
+  /* background-color: grey; */
+  /* border-radius: 5px; */
+  /* padding-right: 3px; */
+  /* padding-left: 2px; */
+}
+@mixin red-black {
+  font-weight: 900;
+  color: red;
+  text-shadow: 2px 2px 2px black;
+  /* background-color: grey; */
+  /* border-radius: 5px; */
+  /* padding-right: 3px; */
+  /* padding-left: 2px; */
+}
+@mixin place_base($imgPath) {
+  background-image: url($imgPath);
+  background-repeat: no-repeat;
+  height: 32px;
+}
+
+.wahllokaltour_place {
+  @include place_base("../../public/static-images/Bottle-Caps-grey.png");
+}
+.wahllokaltour_place_gold {
+  @include place_base("../../public/static-images/Bottle-Caps-gold.svg")
+}
+.wahllokaltour_place_white {
+  @include place_base("../../public/static-images/Bottle-Caps-white.svg");
+}
+.wahllokaltour_place_red {
+  @include place_base("../../public/static-images/Bottle-Caps-red.svg");
+}
+.wahllokaltour_place_silver {
+  @include place_base("../../public/static-images/Bottle-Caps-silver.svg");
+}
+.wahllokaltour_place_bronce {
+  @include place_base("../../public/static-images/Bottle-Caps-bronce.svg");
+}
+
+.wahllokaltour_place > span {
+  @include red-white;
+  @include position_t5_l19;
+}
+.wahllokaltour_place_bronce > span {
+  @include white-black();
+  @include position_t5_l19;
+}
+.wahllokaltour_place_silver > span {
+  @include white-black;
+  @include position_t5_l19;
+}
+.wahllokaltour_place_gold > span {
+  @include white-black;
+  @include position_t5_l19;
+}
+.wahllokaltour_place_2 > span {
+  @include red-white;
+  @include position_t5_l36;
+}
+.wahllokaltour_place_white > span {
+  @include red-black;
+  @include position_t5_l36;
+}
+.wahllokaltour_place_red > span {
+  @include white-black;
+  @include position_t5_l36;
+}
+.wahllokaltour_badge {
+  font-size: 100% !important;
+}
+.wahllokaltour_oepnv {
+  max-height: 15px;
+  margin-right: 5px;
+}
+#map_tour{
+  /*float: left; */
+  width: 100vw; height: 100vh;
+}
+
+.lokal_not_found {
+  height: 70vh;
+}
+@import 'toastify-js/src/toastify.css';

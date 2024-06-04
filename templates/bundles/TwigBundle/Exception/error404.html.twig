@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron justify-content-center">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ asset('build/404_not_found.jpg') }}" class="img-fluid rounded-start" alt="an error occurred">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ '404.title'|trans({}, 'error') }}</h5>
+                    <p class="card-text">
+                    <p>{{ '404.first_paragraph'|trans({}, 'error') }}</p>
+                    {{ '404.second_paragraph'|trans({}, 'error') }}
+                    <p class="card-text"><small class="text-muted">{{ '404.third_paragraph'|trans({}, 'error') }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

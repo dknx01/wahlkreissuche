@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'details_title'|trans({}, 'user') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    {% include 'layout/flash_messages.html.twig' %}
+    <div class="card-title">{{ user.userIdentifier }} ({{ 'table.registered_at'|trans({}, 'user')|lower }} {{ user.registeredAt|date("m.d.Y H:i") }})</div>
+    <div class="card">
+        <div class="card-body" id="userForm">
+            {{ form_start(form) }}
+            {% if errors is defined %}
+                {% for error in errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+            <div class="form-group">
+                {{ form_label(form.username) }}
+                <small id="userNameHelp" class="form-text text-muted">{{ form_help(form.username) }}</small>
+                {{ form_widget(form.username) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                <small id="emailHelp" class="form-text text-muted">{{ form_help(form.email) }}</small>
+                {{ form_widget(form.email) }}
+            </div>
+            <div class="form-group card">
+                <div class="card-header"><label for="user_email" class="form-label required">{{ 'roles'|trans({}, 'user') }}</label></div>
+                <div class="card-body">
+                    <small id="rolesHelp" class="form-text text-muted">{{ 'assigned_roles'|trans({}, 'user') }}</small>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox"
+                               {% if 'ROLE_USER' in user.roles %}checked{% endif %} id="roleUser" name="user[roles][ROLE_USER]" value="ROLE_USER">
+                        <label class="form-check-label" for="roleUser">{{ 'roles_definitions.user'|trans({}, 'user') }}</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox"
+                               {% if 'ROLE_ADMIN' in user.roles %}checked{% endif %} id="roleAdmin" name="user[roles][ROLE_ADMIN]" value="ROLE_ADMIN">
+                        <label class="form-check-label" for="roleAdmin">{{ 'roles_definitions.admin'|trans({}, 'user') }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.isVerified) }}
+                <small id="verifiedHelp" class="form-text text-muted">{{ form_help(form.isVerified) }}</small>
+                {{ form_widget(form.isVerified) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.active) }}
+                <small id="activeHelp" class="form-text text-muted">{{ form_help(form.active) }}</small>
+                {{ form_widget(form.active) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.submit) }}
+                {{ form_widget(form.submit) }}
+            </div>
+            {{ form_row(form._token) }}
+            {{ form_end(form, {render_rest: false}) }}
+
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block javascripts %}
+    {{ parent() }}
+{% endblock %}

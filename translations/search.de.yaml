@@ -1,0 +1,26 @@
+title: "DIE Wahlkreissuche für Berlin"
+search_hint: 'Bitte gibt eine Strasse und Hausnummer ein, optional auch eine PLZ.'
+street: 'Strasse'
+street_hint: 'Deine Strasse'
+house_number: 'Hausnummer'
+house_number_hint: 'Deine Hausnummer'
+zipCode: 'PLZ'
+zipCode_hint: 'Deine PLZ'
+search_button: 'Suchen'
+district: 'Bezirk'
+uwk: 'Urnenwahlkreis'
+bwk: 'Briefwahlkreis'
+awk: 'AGH-Wahlkreis'
+btw_wk: 'Bundestag-Wahlkreis'
+no_result: 'Es wurden keine Ergebnisse gefunden'
+page_title: 'Suche nach Wahlkreis'
+form:
+  title: 'Suche Wahlkreis'
+  hint: 'Suche Wahlkreise (AGH und BTW) anhand einer Adresse'
+  address:
+    hint: 'Die Adresse, nach der gesucht werden soll'
+    title: 'Adresse'
+  state:
+    title: 'BundesLand'
+    hint: 'Das Bundesland, in dem gesucht werden soll'
+  button: 'Suchen'

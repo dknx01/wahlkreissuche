@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'edit.title'|trans({}, 'plakate') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card shadow-lg border-0 rounded-lg mt-5 mb-3">
+                <div class="card-header">
+                    <h3
+                            class="text-center font-weight-light my-4"><h1>{{ 'wish.edit.title'|trans({}, 'plakate') }}</h1></h3>
+                </div>
+
+                {% include 'layout/flash_messages.html.twig' %}
+                <div class="card-body" id="addressAddForm">
+                    <form action="{{ path('wish_plakat_admin_edit', { id: plakat.id }) }}" method="post"
+                          name="wish_election_poster">
+                        <div class="form-group row {% if form.address.vars.errors is not empty %}alert alert-danger{% endif %}">
+                            {{ form_label(form.address) }}
+                            <div class="col-sm-10">
+                                {{ form_widget(form.address) }}
+                            </div>
+                            <div class="col-sm-12">{{ form_help(form.address) }}</div>
+                            {% if form.address.vars.errors is not empty %}
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10" role="alert">{{ form_errors(form.address) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group row {% if form.district.vars.errors is not empty %}alert alert-danger{% endif %}">
+                            {{ form_label(form.district) }}
+                            <div class="col-sm-10">
+                                {{ form_widget(form.district) }}
+                            </div>
+                            <div class="col-sm-12">{{ form_help(form.district) }}</div>
+                            {% if form.district.vars.errors is not empty %}
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10" role="alert">{{ form_errors(form.district) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group row {% if form.city.vars.errors is not empty %}alert alert-danger{% endif %}">
+                            {{ form_label(form.city) }}
+                            <div class="col-sm-10">
+                                {{ form_widget(form.city) }}
+                            </div>
+                            <div class="col-sm-12">{{ form_help(form.city) }}</div>
+                            {% if form.city.vars.errors is not empty %}
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10" role="alert">{{ form_errors(form.city) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group row {% if form.state.vars.errors is not empty %}alert alert-danger{% endif %}">
+                            {{ form_label(form.state) }}
+                            <div class="col-sm-10">
+                                {{ form_widget(form.state) }}
+                            </div>
+                            <div class="col-sm-12">{{ form_help(form.state) }}</div>
+                            {% if form.state.vars.errors is not empty %}
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10" role="alert">{{ form_errors(form.state) }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group row {% if form.description.vars.errors is not empty %}alert alert-danger{% endif %}">
+                            {{ form_label(form.description) }}
+                            <div class="col-sm-10">
+                                {{ form_widget(form.description) }}
+                            </div>
+                            <div class="col-sm-12">{{ form_help(form.description) }}</div>
+                            {% if form.description.vars.errors is not empty %}
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10" role="alert">{{ form_errors(form.description) }}</div>
+                            {% endif %}
+                        </div>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Positionsdaten</legend>
+                                <div class="form-group">
+                                    <label for="inputLong" class="col-sm-6 col-form-label">Longitude</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="wish_election_poster[longitude]" id="inputLong"
+                                               placeholder="Longitude" value="{{ plakat.address.longitude }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLat" class="col-sm-6 col-form-label">Latitude</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputLat" name="wish_election_poster[latitude]"
+                                               placeholder="latitude" value="{{ plakat.address.latitude }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Erstelldaten</legend>
+                                <div class="form-group">
+                                    <label for="inputCreatedAt" class="col-sm-10 col-form-label">{{ 'createdAt'|trans({}, 'plakate-wish') }}:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputCreatedAt" name="wish_election_poster[createdAt]"
+                                               placeholder="{{ 'createdAt'|trans({}, 'plakate-wish') }}" value="{{ plakat.createdAt|date('d.m.Y H:i') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputCreatedBy" class="col-sm-10 col-form-label">{{ 'table.createdBy'|trans({}, 'plakate-wish') }}:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputCreatedBy" name="wish_election_poster[createdBy]"
+                                               placeholder="{{ 'table.createdBy'|trans({}, 'plakate-wish') }}" value="{{ plakat.createdBy }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group row">
+                            <div class="col-sm-2">Plakatort ist noch aktuell?</div>
+                            <div class="col-sm-10">
+                                <div class="fcustom-control custom-switch">
+                                    <input class="custom-control-input" type="checkbox" id="gridActive" name="wish_election_poster[active]"
+                                           value="{{ plakat.active }}" {% if plakat.active %}checked{% endif %}>
+                                    <label class="custom-control-label" for="gridActive">
+                                        Hängt
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" name="wish_election_poster[save]" class="btn btn-partei">{{ 'save'|trans({}, 'generic') }}</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="wish_election_poster[token]" value="{{ csrf_token('wish_election_poster_edit') }}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

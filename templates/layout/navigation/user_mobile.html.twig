@@ -1,0 +1,38 @@
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <div class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" title="{{ 'posters'|trans({}, 'menu') }}">{{ 'posters'|trans({}, 'menu') }}</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path('add_plakat2') }}">{{ 'plakat_add'|trans({}, 'menu') }}</a>
+            <div class="dropdown-divider"></div>
+            <div class="menu-section-header">{{ 'wish-posters'|trans({}, 'menu') }}</div>
+            <a class="dropdown-item" href="{{ path('wishesplakate_state_city', {state: 'Berlin', city: 'Berlin'}) }}">{{ 'wish-posters-map'|trans({'{{state}}':'Berlin'}, 'menu') }}</a>
+            {% for state in  wish_poster_states() %}
+                <div class="text-bold text-center">{{ state.state }}</div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item"
+                   href="{{ path('wishesplakate_state', {'state': state.state}) }}">{{ 'wish-posters-map'|trans({'{{state}}': state.state}, 'menu') }}</a>
+            {% endfor %}
+            <a class="dropdown-item" href="{{ path('add_plakat_wish') }}">{{ 'wish-posters-add'|trans({}, 'menu') }}</a>
+        </div>
+    </div>
+    <div class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" title="{{ 'profile'|trans({}, 'menu') }}"><i
+                    class="fas fa-user-cog"></i></a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item"
+               href="{{ path('userpassword') }}">{{ 'change_password'|trans({}, 'menu') }}</a>
+            <a class="dropdown-item"
+               href="{{ path('plakate_overview') }}">{{ 'posters'|trans({}, 'menu') }}</a>
+            <a class="dropdown-item"
+               href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt" title="{{ 'logout'|trans({}, 'menu') }}"></i><span class="logout">{{ 'logout'|trans({}, 'menu') }}</span></a>
+        </div>
+    </div>
+{% else %}
+    <div class="nav-item">
+        <a class="nav-link active" href="{{ path('app_login') }}">
+            <i class="fas fa-lock-open" title="Login"></i>
+        </a>
+    </div>
+{% endif %}

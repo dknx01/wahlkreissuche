@@ -1,0 +1,9 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    doctrine:
+        ormRepositoryClass: Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository
+    treatPhpDocTypesAsCertain: false
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon

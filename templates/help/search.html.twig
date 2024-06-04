@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page_title.overview'|trans({}, 'help') }} - {{ 'search.title'|trans({}, 'help') }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="text-center">{{ 'page_title.overview'|trans({}, 'help') }} - {{ 'search.title'|trans({}, 'help') }}</h1>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="help-btn active" id="v-pills-search-tab" data-toggle="pill" data-target="#v-pills-search" type="button" role="tab" aria-controls="v-pills-search" aria-selected="true">{{ 'search.overview.generic'|trans({}, 'help') }}</button>
+                <button class="help-btn " id="v-pills-data-tab" data-toggle="pill" data-target="#v-pills-data" type="button" role="tab" aria-controls="v-pills-data" aria-selected="false">{{ 'search.overview.data'|trans({}, 'help') }}</button>
+                <button class="help-btn " id="v-pills-geocoordinates-tab" data-toggle="pill" data-target="#v-pills-geocoordinates" type="button" role="tab" aria-controls="v-pills-geocoordinates" aria-selected="false">{{ 'search.overview.geo_coordinates'|trans({}, 'help') }}</button>
+            </div>
+        </div>
+        <div class="col-9 help-content">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">{{ include('help/search/general.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-data" role="tabpanel" aria-labelledby="v-pills-data-tab">{{ include('help/search/data.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-geocoordinates" role="tabpanel" aria-labelledby="v-pills-geocoordinates-tab">{{ include('help/search/geo.html.twig')}}</div>
+                <div class="tab-pane fade" id="v-pills-posters" role="tabpanel" aria-labelledby="v-pills-posters-tab">...</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+city: Stadt
+city.help: Stadt, in der das Plakat hängt
+state: Bundesland
+state.help: Bundesland, in dem das Plakat hängt
+district: Bezirk/Stadtteil
+address: Adresse
+address.help: Eingabe einer Adresse (inkl. Stadt, eventuell PLZ)
+description: Beschreibung
+description.help: Genauere Beschreibung des Ortes oder hilfreiche Angaben
+longitude: Longitude Eingabe
+longitude.help: Wird automatisch ausgefüllt, oder manuelle Eingabe
+latitude: Latitude Eingabe
+latitude.help: Wird automatisch ausgefüllt, oder manuelle Eingabe
+map: Karte mit gehangenen Plakaten
+mapWahllokale: Karte mit Wahllokalen
+list: Liste
+listWahllokal: Liste der Wahllokale
+new: Neu
+radius: Bannmeile
+createdAt: Gehangen am
+edit:
+  title: Plakat bearbeiten
+  form:
+    address.help: Adresse des Plakates
+    district.help: Bezirk/Stadtteil des Plakates
+    description.help: Genauere Beschreibung des Ortes oder hilfreiche Angaben
+automatic_filled: Wird automatisch ausgefüllt
+overview_state: 'Gehangene Plakate in {state}'
+search_field: 'Suchen ...'
+table:
+  address: 'Adresse'
+  city: 'Ort'
+  description: 'Beschreibung'
+  createdAt: 'Gehangen am'
+  createdBy: 'Gehangen von'
+  active: 'hängt'
+  deletedAt: 'Abgehangen am'
+  district: 'Bezirk/Stadtteil'
+  state: 'Bundesland'
+active_only: 'Nur hängende'
+all: 'Alle Plakate'
+overview_my: 'Meine gehangenen Plakate'
+overview_all: 'Alle Plakate'
+overview_my_wishes: 'Meine gewünschten Plakatorte'
+wish:
+  edit:
+    title: 'Gewünschten Plakatort bearbeiten'
+  active_only: 'Nur aktive'
+  table:
+    active: 'aktiv'
+    deletedAt: 'deaktiviert am'
+thumbnail: 'Kleines Bild des Plakates'
+no_geolocation_add_manual: 'Bitte die Adresse manuel eingeben, da Geo-Location nicht verfügbar ist.'
+more_details: 'Weiter Details anzeigen'
+manual_input: 'Manuelle Adresseingabe'
+modal:
+  no_address:
+    title: 'Adresse fehlt'
+    body: 'Um die Koordinaten einer Adresse zu suchen, hilft es schon auch eine einzugeben.'
+    button: 'Ja, schon gut'
+  request_error:
+    title: 'Fehler beim holen der Adresse'
+    body: 'Es gab leider ein Problem, beim erfassen der Adresse'
+    button: 'Mist, wer war das?'
+page_title: 'Standort eines neuen gehangenen Plakates eintragen'
+thumbnail_alt_text: 'Thumbnail des Plakates'
+poster_still_available: 'Plakat hängt noch?'
+available: 'Hängt'
+creation_data: 'Erstelldaten'
+positions_data: 'Positionsdaten'
+csv-export: 'Export als CSV'
+year: 'Aus Jahr {{year}}'
+year_all: 'Alle Jahre'

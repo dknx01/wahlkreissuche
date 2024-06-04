@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        {{ include('layout/tracking_base.html.twig') }}
+    </head>
+    <body class="container-grey">
+
+    <div class="container container-grey min-vh-100">
+        <div class="row title-text">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-7 text-left">
+                <a href="{{ path('search') }}">
+                    <img src="{{ asset('build/Plan_Berlin.png') }}" alt="header image" {% if isMobile() %}height="30px" width="30px"{% else %}height="60px" width="60px"{% endif %}>
+                    <img src="{{ asset('build/title.svg') }}" alt="{{ 'page_title'|trans }}" style="width: {% if isMobile() %}45%{% else %}75%{% endif %}">
+                </a>
+            </div>
+            <div class="col-sm text-right">
+                <a href="{{ path('search') }}">
+                    <img src="{{ asset('build/Die_PARTEI_Logo_.svg') }}" alt="{{ 'page_title'|trans }}" {% if isMobile() %}style="width: 20vw;" {% endif %}>
+                </a>
+            </div>
+        </div>
+        {% if isMobile() %}
+            {% include 'layout/navigation/navi_mobile.html.twig' %}
+        {% else %}
+            {% include 'layout/navigation/navi.html.twig' %}
+        {% endif %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="py-4 bg-white mt-auto">
+            {% include 'layout/footer/footer.html.twig' %}
+        </footer>
+    </div>
+    </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</html>

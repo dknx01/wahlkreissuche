@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page_title.overview'|trans({}, 'help') }} - {{ 'user.title'|trans({}, 'help') }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="text-center">Hilfe-Seite - {{ 'user.title'|trans({}, 'help') }}</h1>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="help-btn active" id="v-pills-register-tab" data-toggle="pill" data-target="#v-pills-register" type="button" role="tab" aria-controls="v-pills-register" aria-selected="true">{{ 'user.register.title'|trans({}, 'help') }}</button>
+                <button class="help-btn " id="v-pills-login-tab" data-toggle="pill" data-target="#v-pills-login" type="button" role="tab" aria-controls="v-pills-login" aria-selected="false">{{ 'user.login.title'|trans({}, 'help') }}</button>
+                <button class="help-btn " id="v-pills-passwort-tab" data-toggle="pill" data-target="#v-pills-passwort" type="button" role="tab" aria-controls="v-pills-passwort" aria-selected="false">{{ 'user.password.title'|trans({}, 'help') }}</button>
+                <button class="help-btn " id="v-pills-posters-tab" data-toggle="pill" data-target="#v-pills-posters" type="button" role="tab" aria-controls="v-pills-posters" aria-selected="false">{{ 'user.posters.title'|trans({}, 'help') }}</button>
+            </div>
+        </div>
+        <div class="col-9 help-content">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-register" role="tabpanel" aria-labelledby="v-pills-register-tab">{{ include('help/user/register.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-login" role="tabpanel" aria-labelledby="v-pills-login-tab">{{ include('help/user/login.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-passwort" role="tabpanel" aria-labelledby="v-pills-passwort-tab">{{ include('help/user/password.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-posters" role="tabpanel" aria-labelledby="v-pills-posters-tab">{{ include('help/user/posters.html.twig') }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

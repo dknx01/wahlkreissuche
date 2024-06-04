@@ -1,0 +1,12 @@
+{
+    "browser": {
+        "no_gps_available": "Geolocation not supported by browser"
+    },
+    "map": {
+        "districts": "Bezirke",
+        "places": "Orte"
+    },
+    "error": {
+        "no-data-load": "Es konnten keine Daten geladen werden."
+    }
+}

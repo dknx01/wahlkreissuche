@@ -1,0 +1,19 @@
+deptrac:
+  layers:
+    - name: Twig
+      collectors:
+#        - type: directory
+#          value: "../../vendor/twig/twig/src/*"
+        - type: classLike
+          regex: '^Twig\\.*'
+    - name: TwigExtensions
+      collectors:
+        - type: className
+          regex: '^App\\Twig\\.*'
+  ruleset:
+    TwigExtensions:
+      - Twig
+      - Matoto
+      - Repository
+      - Options
+      - ImageUploader

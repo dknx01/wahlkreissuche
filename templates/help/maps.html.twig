@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page_title.overview'|trans({}, 'help') }} - {{ 'user.title'|trans({}, 'help') }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="text-center">Hilfe-Seite - {{ 'user.title'|trans({}, 'help') }}</h1>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="help-btn active" id="v-pills-btw-tab" data-toggle="pill" data-target="#v-pills-btw" type="button" role="tab" aria-controls="v-pills-btw" aria-selected="true">{{ 'maps.btw.title'|trans({}, 'help') }}</button>
+                <button class="help-btn active" id="v-pills-maps-tab" data-toggle="pill" data-target="#v-pills-maps" type="button" role="tab" aria-controls="v-pills-maps" aria-selected="true">{{ 'maps.maps.title'|trans({}, 'help') }}</button>
+            </div>
+        </div>
+        <div class="col-9 help-content">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-btw" role="tabpanel" aria-labelledby="v-pills-btw-tab">{{ include('help/maps/btw.html.twig') }}</div>
+                <div class="tab-pane fade" id="v-pills-maps" role="tabpanel" aria-labelledby="v-pills-maps-tab">{{ include('help/user/login.html.twig') }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

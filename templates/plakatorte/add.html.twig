@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block title %}Standort eines neuen gehangenen Plakates eintragen{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css"
+          type="text/css">
+{% endblock %}
+
+{% block body %}
+
+    <div id="demo"></div>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card shadow-lg border-0 rounded-lg mt-5 mb-3">
+                <div class="card-header"><h3
+                            class="text-center font-weight-light my-4">{{ 'title'|trans({}, 'maps') }}</h3>
+                </div>
+                {% include 'plakatorte/modal.html.twig' with {'id': 'noAddressModal', 'title': 'Adresse fehlt', 'body': 'Um die Koordinaten einer Adresse zu suchen, hilft es schon auch eine einzugeben.', 'button': 'Ja, schon gut'} only %}
+                {% include 'plakatorte/modal.html.twig' with {'id': 'requestErrorModal', 'title': 'Fehler beim holen der Adresse', 'body': 'Es gab leider ein Problem, beim erfassen der Adresse', 'button': 'Mist, wer war das?'} only %}
+
+{#                <div class="alert alert-primary ">#}
+{#                    Die Andresse kann via GPS bestimmt werden ("Aktuelle Position bestimmen")#}
+{#                    Bei der manuellen Eingabe bitte den Button "Hole Geo-Koordinaten zur#}
+{#                    Adresse" danach noch drücken.#}
+{#                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                        <span aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+{#                </div>#}
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    {% if errors %}
+                        {% for error in errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                        <div class="form-group">
+{#                            <div>#}
+{#                                <button type="button" class="btn btn-sm btn-partei" id="geoToAddress">Aktuelle Position bestimmen#}
+{#                                </button>#}
+{#                            </div>#}
+                            <div class="alert alert-dark d-none" role="alert" id="manualAddress">
+                                Bitte die Adresse manuel eingeben, da Geo-Location nicht verfügbar ist.
+                            </div>
+                            {{ form_label(form.address) }}
+                            {{ form_widget(form.address) }}
+                        </div>
+                        {# <label class="small mb-1" for="inputAddress">{{ 'form.address'|trans({}, 'maps') }}</label> #}
+                        {# <input type="text" value="{{ form.address }}" name="address" id="inputAddress" class="form-control py-4"  autofocus> #}
+                        <small id="addressHelp" class="form-text text-muted">{{ form_help(form.address) }}</small>
+                        <div class="alert alert-success" id="addressCoordinatesReceived">
+                            Koordinaten geholt
+                        </div>
+{#                        <button type="button" class="btn btn-sm btn-partei" id="addressToGeo">Hole Geo-Koordinaten zur#}
+{#                            Adresse#}
+{#                        </button>#}
+                        <div class="form-group">
+
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                            <small id="addressHelp"
+                                   class="form-text text-muted">{{ form_help(form.description) }}</small>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.district) }}
+                            {{ form_widget(form.district) }}
+                            <small id="addressHelp" class="form-text text-muted">{{ form_help(form.district) }}</small>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-outline-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="formGroupLat formGroupLong">Manuelle Positionseingabe</button>
+                        </div>
+                        <div class="form-group collapse multi-collapse" id="formGroupLat">
+                            {{ form_label(form.latitude) }}
+                            {{ form_widget(form.latitude) }}
+                            <small id="addressHelp" class="form-text text-muted">{{ form_help(form.latitude) }}</small>
+                        </div>
+                        <div class="form-group collapse multi-collapse" id="formGroupLong">
+                            {{ form_label(form.longitude) }}
+                            {{ form_widget(form.longitude) }}
+                            <small id="addressHelp" class="form-text text-muted">{{ form_help(form.longitude) }}</small>
+                        </div>
+                    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('new_user') }}" > #}
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                            <button class="btn btn-lg btn-partei" type="submit">
+                                {{ 'save'|trans({}, 'generic') }}
+                            </button>
+                        </div>
+                        {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('address') }}
+{% endblock %}

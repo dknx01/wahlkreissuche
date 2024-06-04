@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'overview_title'|trans({}, 'user') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="card-title">
+            <input id="user_overview_search" type="text" placeholder="{{ 'search_field'|trans({}, 'user') }}">
+        </div>
+        <table class="table table-striped" id="user_overview"  style="position: sticky;top: 0">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{ 'table.username'|trans({}, 'user') }}</th>
+                <th scope="col">{{ 'table.email'|trans({}, 'user') }}</th>
+                <th scope="col">{{ 'table.roles'|trans({}, 'user') }}</th>
+                <th scope="col">{{ 'table.verified'|trans({}, 'user') }}</th>
+                <th scope="col">{{ 'table.active'|trans({}, 'user') }}</th>
+                <th scope="col">{{ 'table.registered_at'|trans({}, 'user') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, user in users %}
+                <tr>
+                    <th scope="row">{{ key }}</th>
+                    <td><a href="{{ path('user_edit', {id: user.id}) }}">{{ user.userIdentifier }}</a></td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles|join(',') }}</td>
+                    <td>{{ _self.simple_status(user.verified) }}</td>
+                    <td>{{  _self.simple_status(user.active) }}</td>
+                    <td>{{ user.registeredAt|date("d.m.Y H:i") }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% macro simple_status(value)%}
+    {% set text='times-circle' %}
+    {% set color='error' %}
+    {% if value %}
+        {% set text='check-circle' %}
+        {% set color='success' %}
+    {% endif %}
+    <span class="badge badge-{{ color }}"><i class="fas fa-{{ text }}"></i></span>
+{% endmacro %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('user_overview') }}
+{% endblock %}

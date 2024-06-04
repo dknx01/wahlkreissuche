@@ -1,0 +1,181 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+imports:
+    - { resource: ../wks-config/config.yaml }
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    router.request_context.scheme: 'https'
+    asset.request_context.secure: true
+    thumbnailsFolder: '%kernel.project_dir%/thumbnails/'
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    _instanceof:
+        App\Service\Domain\Wahlkreise\Transformer\WahlkreisTypeTransformer:
+            tags: [ 'app.wahlkreis_type_transformer' ]
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        arguments:
+            - '%env(DATABASE_URL)%'
+
+    appwahlkreis_transformer_locator:
+        class: Symfony\Component\DependencyInjection\ServiceLocator
+        arguments:
+            - !tagged_iterator app.wahlkreis_type_transformer
+    App\Service\Domain\Wahlkreise\Transformer:
+        arguments:
+            $typeTransformer: '@appwahlkreis_transformer_locator'
+
+    App\Command\ImportBtwKreiseCommand:
+        arguments:
+            $dataFiles:
+                BTW_2021: '%kernel.project_dir%/data/wahlkreise/btw/Geometrie_Wahlkreise_20DBT_VG250.shp'
+    App\Command\ImportAghKreiseCommand:
+        arguments:
+            $dataFile: '%kernel.project_dir%/data/AWK_AH21_25833.geojson'
+    App\Command\GenerateGermanyMapDataCommand:
+        arguments:
+            $mapFile: '%kernel.project_dir%/data/germany.geojson'
+    App\Command\ImportWahllokaleBerlinCommand:
+        arguments:
+            $dataFile: '%kernel.project_dir%/data/RBS_OD_Wahllokale_EU24/RBS_OD_Wahllokal_EU24.geojson'
+
+    App\Service\Domain\WahlkreisHandler:
+        arguments:
+            $germanyGeoJsonFile: '%kernel.project_dir%/data/germany.geojson'
+
+    App\Security\VerifyEmailHelper:
+        arguments:
+            $tokenGenerator: '@symfonycasts.verify_email.token_generator'
+            $lifetime: 3600
+    App\Security\EmailVerifier:
+        arguments:
+            $verifyEmailHelper: '@App\Security\VerifyEmailHelper'
+    App\Controller\RegistrationController:
+        arguments:
+            $emailVerifier: '@App\Security\EmailVerifier'
+            $fromAddress: '%registration_email_from%'
+
+    app.cache.adapter.address:
+        parent: 'cache.adapter.doctrine_dbal'
+        arguments:
+            $options:
+                'db_table': address_search_cache
+        tags:
+            - { name: 'cache.pool', namespace: 'address' }
+    app.cache.adapter.loginLink:
+        parent: 'cache.adapter.doctrine_dbal'
+        arguments:
+            $options:
+                'db_table': login_link_cache
+        tags:
+            - { name: 'cache.pool', namespace: 'loginLink' }
+
+    CurlClient:
+        class: 'Symfony\Component\HttpClient\CurlHttpClient'
+
+    AsciiSlugger:
+        class: Symfony\Component\String\Slugger\AsciiSlugger
+        arguments:
+            $defaultLocale: 'en'
+    App\Service\Domain\Search:
+        arguments:
+            $cache: '@address'
+            $slugger: '@AsciiSlugger'
+            $client: '@CurlClient'
+
+    App\Twig\MenuExtension:
+        tags: [ 'twig.extension' ]
+    App\Twig\TrackingExtension:
+        tags: [ 'twig.extension' ]
+
+    App\Security\LoginLink\ExpiredSignatureStorage:
+        arguments:
+            $cache: '@app.cache.adapter.loginLink'
+            $lifetime: 3000
+
+    App\Security\LoginLink\LoginLinkHandler:
+        arguments:
+            $options:
+                route_name: 'login_check_2'
+                lifetime: 3000
+    App\Security\LoginLink\SignatureHasher:
+        arguments:
+            $maxUses: 1
+            $signatureProperties:
+                - id
+            $secret: '%kernel.secret%'
+
+    successHandler:
+        class: Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler
+    failureHandler:
+        class: Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler
+
+    App\Security\LoginLink\LoginLinkAuthenticator:
+        arguments:
+            $successHandler: '@successHandler'
+            $failureHandler: '@failureHandler'
+            $options:
+                check_route: 'login_check_2'
+    App\Service\Tracking\Matomo:
+        arguments:
+            $env: '%kernel.environment%'
+            $enabled: '%matomo_enabled%'
+    App\Service\Tracking\MatomoConfig:
+        arguments:
+            $env: '%kernel.environment%'
+            $enabled: '%matomo_enabled%'
+            $cookieDomain: '%matomo_cookie_domain%'
+            $matomoDomain: '%matomo_domain%'
+            $noScriptImage: '%matomo_noscript_img%'
+            $trackerUrl: '%matomo_tracker_url%'
+            $siteId: '%env(MATOMO_SITE_ID)%'
+            $serverSide: '%matomo_server_side%'
+    MatomoTracker:
+        class: MatomoTracker
+        arguments:
+            $idSite: '%env(MATOMO_SITE_ID)%'
+            $apiUrl: '%env(MATOMO_URL)%'
+        calls:
+            - setTokenAuth: ['%env(MATOMO_API_TOKEN)%']
+    App\Service\Domain\ImageUploader:
+        arguments:
+            $uploadFolder: '%kernel.project_dir%/var/thumbnails/'
+    App\Controller\Userbackend\ElectionPosterAdminController:
+        arguments:
+            $uploadFolder: '%kernel.project_dir%/var/thumbnails/'
+            $varFolder: '%kernel.project_dir%/var/export/'
+
+    App\Command\ConvertShpFilesCommand:
+        arguments:
+            $path: '%kernel.project_dir%/data/btw21_geometrie_wahlkreise_geo_shp/Geometrie_Wahlkreise_20DBT_geo.shp'
+
+    App\Command\ImportWahlkreiseKreiseCommand:
+        arguments:
+            $schemaPath: '%kernel.project_dir%/src/Service/Import/Config/schema.json'
+            $baseDir: '%kernel.project_dir%/'
+
+    MobileDetect:
+        class: 'Detection\MobileDetect'
+        arguments:
+            $config:
+                'autoInitOfHttpHeaders': false
+    App\EventListener\MobileDetectListener:
+        arguments:
+            $mobileDetect: '@MobileDetect'

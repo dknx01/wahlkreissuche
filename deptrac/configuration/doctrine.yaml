@@ -1,0 +1,10 @@
+deptrac:
+  layers:
+    - name: Doctrine
+      collectors:
+        - type: classLike
+          regex: '^Doctrine\\.*'
+
+  ruleset:
+    Doctrine:
+      - Doctrine

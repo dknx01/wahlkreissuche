@@ -1,0 +1,15 @@
+{% if is_granted('ROLE_ADMIN') %}
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" title="{{ 'Admin'|trans({}, 'menu') }}"><i
+                    class="fas fa-tools"></i></a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item"
+               href="{{ path('users_overview') }}">{{ 'users'|trans({}, 'menu') }}</a>
+            <a class="dropdown-item"
+               href="{{ path('election_posters_all') }}">{{ 'posters'|trans({}, 'menu') }}</a>
+            <a class="dropdown-item"
+               href="{{ path('admin_wish_election_posters_all') }}">{{ 'wish-posters'|trans({}, 'menu') }}</a>
+        </div>
+    </li>
+{% endif %}

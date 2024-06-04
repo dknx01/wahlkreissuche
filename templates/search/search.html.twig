@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'page_title'|trans({}, 'search') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {{ include('layout/flash_messages.html.twig') }}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'form.title'|trans({}, 'search') }}</h5>
+            <p class="card-text">{{ 'form.hint'|trans({}, 'search') }}</p>
+            <form action="{{ path('suche_result') }}" method="post">
+                <div class="row mb-3">
+                    <label for="address" class="form-label">{{ 'form.address.title'|trans({}, 'search') }}</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="address" name="address" aria-describedby="addressHelp">
+                        <div id="addressHelp" class="form-text">{{ 'form.address.hint'|trans({}, 'search') }}</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="state" class="form-label">{{ 'form.state.title'|trans({}, 'search') }}</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" aria-label="Bundesland" id="state" name="state" aria-describedby="stateHelp">
+                            {% for state in states %}
+                                <option value="{{ state }}" {% if state is same as "Berlin" %}selected{% endif %}>{{ state }}</option>
+                            {% endfor %}
+                        </select>
+                        <div id="stateHelp" class="form-text">{{ 'form.state.hint'|trans({}, 'search') }}</div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">{{ 'form.button'|trans({}, 'search') }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

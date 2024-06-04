@@ -1,0 +1,8 @@
+{
+  "kind": "LTW",
+  "state": "Sachsen",
+  "fields": {
+    "wk_nr": "nr_wk",
+    "wk_name": "name_wk"
+  }
+}

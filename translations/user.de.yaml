@@ -1,0 +1,39 @@
+Username: Username
+Email: E-Mail-Adresse
+Is verified: 'ist verifiziert'
+Active: Aktiv
+Old password: 'Altes Passwort'
+oldPassword: 'Das alte Password'
+New password1: 'Neues Passwort'
+New password2: 'Neues Passwort wiederholen'
+wrongOldPassword: 'Altes Password verkehrt'
+notSamePasswords: 'Neue Passwörter stimmen nicht überein'
+title_change_password: 'Passwort ändern'
+details_title: 'Benutzerdetails'
+roles: 'Rollen'
+assigned_roles: 'Zugewiesene Rollen'
+roles_definitions:
+  user: 'User'
+  admin: 'Admin'
+overview_title: 'Benutzerübersicht'
+search_field: 'Suche..'
+table:
+  username: 'Username'
+  email: 'E-Mail-Adresse'
+  roles: 'Rollen'
+  verified: 'Verifiziert'
+  active: 'Aktiv'
+  registered_at: 'Registriert am'
+registration:
+  email_exits: 'E-Mail-Adresse ist schon bekannt'
+overview:
+  created_by_me: 'Von mir gehangene Plakate'
+  wished_by_me: 'Von mir gewünschte Plakatorte'
+  page_title: 'Übersicht Plakate'
+  in_area: 'Im Bundesland bzw. Gegend'
+  states: 'Bundesländer'
+  areas: 'Gegenden/Orte'
+  all_posters_hint: 'Alle Plakate anzeigen. Könnte etwas länger dauern, bei sehr vielen'
+  my_poster: 'Meine Plakate'
+  posters: 'Plakate'
+  all_posters: 'Alle Plakate'

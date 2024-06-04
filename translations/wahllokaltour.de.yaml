@@ -1,0 +1,20 @@
+register: Neuen Teilnehmenden registrieren
+register_person: Neue teilnehmende Person für die Wahllokaltour registrieren
+name: 'Name'
+name_register: 'Name registrieren'
+game:
+  username: Username
+  points: Punkte
+  visited_pubs: Besuchte Lokale
+not_found: Das Lokal wurde nicht gefunden, wahrscheinlich schon leer getrunken.
+back_to_map: Zurück zur Karte
+add_points:
+  success:
+    added: '<strong>{{points}}</strong> Punkte für <strong>{{username}}</strong> hinzugefügt: {{lokal_name}}'
+  error:
+    already_added: '<strong>{{lokal_name}}</strong> wurde schon für <strong>{{username}}</strong> hinzugefügt'
+user:
+  error:
+    already_exists: 'Der Name ist schon vergeben.'
+    name_empty: 'Name kann nicht leer sein'
+lokal_not_found: '<strong>{{points}}</strong> Punkte für <strong>{{username}}</strong> abgezogen, wegen Besuch vom Lokal <strong>{{lokal_name}}</strong>'

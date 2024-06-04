@@ -1,0 +1,8 @@
+{
+  "kind": "LTW",
+  "state": "Brandenburg",
+  "fields": {
+    "wk_nr": "WKR_NR",
+    "wk_name": "WKR_NAME"
+  }
+}

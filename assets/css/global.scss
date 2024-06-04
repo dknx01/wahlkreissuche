@@ -1,0 +1,268 @@
+// customize some Bootstrap variables
+@import "colors";
+@import "loader";
+@import "navigation";
+// the ~ allows you to reference things in node_modules
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap.scss";
+// font-awesome
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "wahllokaltour";
+
+.required:after{
+  content:"*";
+  font-weight:bold;
+  color: red;
+  margin-left: 5px;
+}
+
+.btn-red {
+  background: $red;
+}
+.container-grey {
+  background: $gray-300;
+}
+.hint-background {
+  background-color: $gray-500 !important;
+}
+
+/*Cookie Consent Begin*/
+#cookieConsent {
+  background-color: rgba(20,20,20,0.8);
+  min-height: 26px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 26px;
+  padding: 8px 0 8px 30px;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 9999;
+}
+#cookieConsent a {
+  color: $partei-red; //#4B8EE7
+  text-decoration: none;
+}
+#closeCookieConsent {
+  float: right;
+  display: inline-block;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin: -15px 0 0 0;
+  font-weight: bold;
+}
+#closeCookieConsent:hover {
+  color: #FFF;
+}
+#cookieConsent a.cookieConsentOK {
+  background-color: $partei-red; //#F1D600
+  color: #000;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+  float: right;
+  margin: 0 60px 0 10px;
+}
+#cookieConsent a.cookieConsentOK:hover {
+  background-color: #E0C91F;
+}
+/*Cookie Consent End*/
+
+.title-text {
+  padding-top: 10px;
+}
+.btn-partei {
+  background-color: $partei-red;
+  color: white;
+}
+.card-spacing {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.low-signatures {
+  background-color: $low-signatures !important;
+}
+.medium-signatures {
+  background-color: $medium-signatures !important;
+}
+.high-signatures {
+  background-color: $high-signatures !important;
+}
+.text-red {
+  color: $partei-red;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-no-results-progressbar {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.background-light-grey {
+  background-color: $gray-300;
+}
+
+.menu-space-top {
+  height: 10px;
+}
+
+// map css
+#map{
+  /*float: left; */
+  width: 100%; height: 470px;
+}
+.ol-tooltip *{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300
+}
+.ol-tooltip {
+  display: flex; overflow: hidden;
+  padding: 3px; margin: 3px 0;
+  border-radius: 6px;
+}
+.ol-tooltip:hover{
+  background: rgba(102, 51, 153, 0.062)
+}
+.ol-tooltip img {
+  float: left; padding: 5px;
+  width: 40px; height: 40px;
+}
+.ol-tooltip-content a{
+    font-size: 15px; padding: 2px;
+    text-decoration: none;
+    color: $secondary;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.ol-tooltip-content a:hover{
+    color: $partei-red;
+}
+.ol-tooltip-description{
+  font-size: 12px; padding: 2px;
+  width: 145px;
+  word-break: break-word;
+}
+.ol-tooltip-content{
+  font-size: 0.6em;
+  padding: 2px;
+  white-space: nowrap;
+}
+//.ol-tooltip-company{
+//  font-size: 12px; padding: 2px;
+//}
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.1));
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #cccccc2a;
+  bottom: 12px;
+  width: 210px;
+  transform: translate(-50%, 0%);
+  margin-bottom: 10px;
+}
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 120px;
+  margin-left: -16px;
+}
+
+.ol-popup:before {
+  border-top-color: #cccccc2a;
+  border-width: 11px;
+  left: 120px;
+  margin-left: -16px;
+}
+.marker{
+  background: #222 !important;
+}
+.animated {
+  position: relative;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated:hover {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+@keyframes hop {
+  0% {margin-bottom: 0;}
+  50% {margin-bottom: 30px;}
+  100% {margin-bottom: 0;}
+}
+.hop {
+  -webkit-animation-name: hop;
+  animation-name: hop;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
+
+.badge-link > a {
+  color: white;
+}
+.badge-link > a:hover {
+  color: $partei-red;
+}
+.menu-section-header {
+  @extend .text-bold;
+  @extend .text-center;
+  background-color: $gray-300;
+}
+
+.thumbnail-map {
+  max-height: 100px;
+  margin: 0.5em;
+  max-width: 100px;
+}
+
+.help-btn {
+  @extend .nav-link;
+  border-left: 5px solid $medium-signatures !important;
+}
+
+.help-content {
+  border-left: 2px solid $gray-500;
+}
+.help-row {
+  margin-bottom: 2vh;
+}
+
+.wks-link {
+  color: $partei-red;
+}
+.mobile_menu {
+  background-color: $partei-red;
+}
+.mobile_menu_content {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: $partei-red;
+}
+
+.mobile_menu_content > .nav-item > a {
+  color: white;
+}
+
+.copyright {
+  color: #80bdff!important;
+}

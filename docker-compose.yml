@@ -1,0 +1,57 @@
+services:
+  webserver:
+    build: ./docker/nginx
+    container_name: wahlkreissuche-server
+    working_dir: /var/www/project
+    volumes:
+      - ./public:/var/www/project/public
+      - ./docker/nginx/config/vhost.conf:/etc/nginx/conf.d/default.conf #Überschreibt die config für die Entwicklung
+      - ./docker/nginx/certs:/etc/nginx/certs
+    ports:
+      - "8985:80"
+      - "8986:443"
+    depends_on:
+      - php
+
+  php:
+    build: ./docker/php-fpm
+    container_name: wahlkreissuche-php
+    working_dir: /var/www/project
+    environment:
+      - APPLICATION_ENV=dev
+      - PHP_IDE_CONFIG=serverName=_
+    volumes:
+      - ./:/var/www/project
+      - ./docker/php-fpm/config/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini #Überschreibt die config für die Entwicklung
+      - ./docker/php-fpm/config/development.ini:/usr/local/etc/php/php.ini #Überschreibt die config für die Entwicklung
+    depends_on:
+      - database
+      - mailhog
+    expose:
+      - 9090
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
+
+
+  database:
+    image: mariadb:latest
+    container_name: wahlkreissuche-database
+    environment:
+      - MYSQL_ROOT_PASSWORD=wahlkreissuche
+      - MYSQL_DATABASE=wahlkreissuche
+      - MYSQL_PASSWORD=wahlkreissuche
+      - MYSQL_USER=wahlkreissuche
+      - TZ=Europe/Berlin
+    ports:
+      - "33062:3306"
+    volumes:
+      - data:/var/lib/mysql
+      - ./:/var/www/project
+
+volumes:
+  data:

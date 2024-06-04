@@ -1,0 +1,10 @@
+{
+    "connection": "Verbindung",
+    "s-train": "S-Bahn",
+    "subway": "U-Bahn",
+    "bus": "Bus",
+    "tram": "Tram",
+    "opening_hours": "Öffnungszeiten: %{data}",
+    "meeting_point": "Treffpunkt",
+    "collecting_points": "Punkte sammeln"
+}

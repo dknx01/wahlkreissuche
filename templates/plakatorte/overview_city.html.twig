@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'overview_state'|trans({"{state}": city}, 'plakate') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="card-title">
+            <input id="user_overview_search" type="text" placeholder="{{ 'search_field'|trans({}, 'plakate') }}">
+            <h6><span class="badge badge-secondary badge-link">
+                    {% if not activeOnly %}
+                    <a href="{{ path('election_posters_city', {"city": city, "activeOnly": "active"}) }}">{{ 'active_only'|trans({}, 'plakate') }}</a>
+                    {% else %}
+                    <a href="{{ path('election_posters_city', {"city": city}) }}">{{ 'all'|trans({}, 'plakate') }}</a>
+                    {% endif %}
+                </span></h6>
+        </div>
+        <table class="table table-striped" id="election_poster_overview"  style="position: sticky;top: 0">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{ 'table.address'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.district'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.description'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.createdAt'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.createdBy'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.active'|trans({}, 'plakate') }}</th>
+                <th scope="col">{{ 'table.deletedAt'|trans({}, 'plakate') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, poster in posters %}
+                <tr>
+                    <th scope="row">{{ key }}</th>
+                    <td><a href="{{ path('plakat_admin_edit', {id:poster.id}) }}">{{ poster.address.address }}</a></td>
+                    <td>{{ _self.place(poster) }}</td>
+                    <td data-toggle="tooltip" data-placement="top" title="{{ poster.description }}">{{ poster.description|u.truncate(10, '...') }}</td>
+                    <td>{{ poster.createdAt|date("d.m.Y H:i") }}</td>
+                    <td>{{ poster.createdBy }}</td>
+                    <td>{{ _self.simple_status(poster.active) }}</td>
+                    <td>{{ _self.deletedAt(poster) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% macro simple_status(value)%}
+    {% set text='times-circle' %}
+    {% set color='error' %}
+    {% if value %}
+        {% set text='check-circle' %}
+        {% set color='success' %}
+    {% endif %}
+    <span class="badge badge-{{ color }}"><i class="fas fa-{{ text }}"></i></span>
+{% endmacro %}
+{% macro place(poster)%}
+    {% if poster.address.district is not empty %}{{ poster.address.district }}{% endif %}
+{% endmacro %}
+{% macro deletedAt(poster)%}
+    {% if poster.deletedAt is not null %}{{ poster.deletedAt|date("d.m.Y H:i") }}{% endif %}
+{% endmacro %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('election_poster_overview') }}
+{% endblock %}

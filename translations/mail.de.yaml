@@ -1,0 +1,22 @@
+login_link:
+  hello: Hallo,
+  body: |
+    Hier ist der Login-Link für die Wahlkreissuche: <br><br>
+    <a href="{{ signedUrl }}">Login</a>.<br>
+    Dieser Link ist 3 Minuten gültig.
+  greeting: Hurra!
+  body_txt: |
+    Hier ist der Login-Link für die Wahlkreissuche:
+    {{ signedUrl }}
+    Dieser Link ist 3 Minuten gültig.
+  subject: 'Login-Link für Wahlkreissuche'
+
+register:
+  mail:
+    subject: 'Bitte bestätige deine E-Mail-Adresse'
+    title: 'Hallo! Bitte bestätige deine E-Mail-Adresse!'
+    body: |
+      Bitte bestätige deine E-Mail-Adresse durch Klicken des folgenden links: <br><br>
+      <a href="{{ signedUrl }}">Bestätigung meiner E-Mail-Adresse</a>.
+      Dieser Link wird in {{ expires }} ablaufen.
+    greeting: Hurra!

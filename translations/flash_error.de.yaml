@@ -1,0 +1,3 @@
+user:
+  not_active: 'Benutzer ist nicht aktiviert.'
+  not_found_email: 'Kein User mit der E-Mail-Adresse gefunden.'

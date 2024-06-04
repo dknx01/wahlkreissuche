@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'page_title'|trans }} - {{ 'results'|trans }}{% endblock %}
+{% block body %}
+    {% if election_areas is empty %}
+        <div class="jumbotron">
+            {{ 'no_result'|trans({}, 'search') }}
+        </div>
+    {% else %}
+    {% include 'search/result-list.html.twig'%}
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{#    {{ encore_entry_script_tags('search_results') }}#}
+{#    <script>#}
+{#        let searchResults = [#}
+{#            {% for key, election_area in election_areas %}#}
+{#            {#}
+{#                'lon': "{{ election_area.address.lon }}",#}
+{#                'lat': "{{ election_area.address.lat }}",#}
+{#                'address': "{{ election_area.address.road }} {{ election_area.address.houseNumber }}",#}
+{#                'agh_wk': "{{ election_area.wahlkreis.agh.wahlkreisShort }}",#}
+{#                'agh_bezirk': "{{ election_area.wahlkreis.agh.bezirk }}",#}
+{#            },#}
+{#            {% endfor %}#}
+{#        ];#}
+{#    </script>#}
+
+{% endblock %}

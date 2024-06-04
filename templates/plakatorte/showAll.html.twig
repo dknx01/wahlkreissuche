@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'posters.title'|trans({}, 'maps') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('stimulus_app') }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'map'|trans({}, 'plakate') }}</h1>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('plakate_with_wishes', {'city': city, 'state': state}) }}" class="btn btn-secondary btn-sm" role="button" data-bs-toggle="button">{{ 'posters.with_wishes'|trans({}, 'maps') }}</a>
+    {% endif %}
+
+    <div id="map" {{ stimulus_controller(
+        'plakate',
+        values
+    ) }}> {% include 'snippets/loader.html.twig' %}</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('stimulus_app') }}
+
+{% endblock %}

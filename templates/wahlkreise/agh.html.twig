@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'mapAghKreise'|trans({},'menu') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('stimulus_app') }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'mapAghKreise'|trans({},'menu') }}</h1>
+    <div id="map" {{ stimulus_controller(
+        'agh-kreise',
+        values
+    ) }}> {% include 'snippets/loader.html.twig' %}</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('stimulus_app') }}
+
+
+{% endblock %}

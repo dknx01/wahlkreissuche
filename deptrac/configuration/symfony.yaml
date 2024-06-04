@@ -1,0 +1,14 @@
+deptrac:
+  layers:
+    - name: Symfony-Http-Foundation
+      collectors:
+        - type: className
+          regex: '^Symfony\\Component\\HttpFoundation\\*'
+    - name: Symfony-Form
+      collectors:
+        - type: className
+          regex: '^Symfony\\Component\\Form\\*'
+    - name: Symfony-OptionsResolver
+      collectors:
+        - type: className
+          regex: '^Symfony\\Component\\OptionsResolver\\*'

@@ -1,0 +1,4 @@
+There is already an account with this username: 'Der Benutzername ist ungültig'
+password_too_short: 'Das Passwort muss mindestens {{ limit }} Zeichen lang sein'
+enter_password: 'Bitte ein Passwort eingeben'
+agree_terms: Sie müssen den Nutzungsbedingungen zustimmen.

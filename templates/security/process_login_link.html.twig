@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'register'|trans({}, 'register') }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <form action="{{ path('login_check_2') }}" method="POST">
+            <input type="hidden" name="expires" value="{{ expires }}">
+            <input type="hidden" name="user" value="{{ user }}">
+            <input type="hidden" name="hash" value="{{ hash }}">
+
+            <button type="submit" class="btn btn-partei">Continue</button>
+        </form>
+    </div>
+{% endblock %}

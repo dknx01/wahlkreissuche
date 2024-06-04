@@ -1,0 +1,44 @@
+addresses:
+  header: Adressen
+  body: |
+    Die Daten wurden mit dem Datensatz „Geometrien der Wahlbezirke für die Wahl zum Abgeordnetenhaus von Berlin 2021“ verknüpft.
+    <a href="https://fbinter.stadt-berlin.de/fb/index.jsp" target="_blank">Geoportal Berlin / Adressen Berlin</a>.<br>
+    Lizenz: <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank">Datenlizenz Deutschland 2.0</a><br>
+    Heruntergeladen von <a href="https://opendata-esri-de.opendata.arcgis.com/datasets/273bf4ae7f6a460fbf3000d73f7b2f76_0" target="_blank">https://opendata-esri-de.opendata.arcgis.com/datasets/273bf4ae7f6a460fbf3000d73f7b2f76_0</a>
+    am 20.01.2021.
+wahlkreise_berlin:
+  header: Wahlkreise Berlin
+  body: |
+    Amt für Statistik Berlin-Brandenburg (2020): Geometrien der Wahlbezirke für die Wahl zum
+    Abgeordnetenhaus von Berlin 2021.<br>
+    Online verfügbar unter <a href="https://daten.berlin.de/datensaetze/geometrien-der-wahlbezirke-f%C3%BCr-die-wahlen-zum-deutschen-bundestag-berlin-und-zum" target="_blank">https://daten.berlin.de/datensaetze/geometrien-der-wahlbezirke-f%C3%BCr-die-wahlen-zum-deutschen-bundestag-berlin-und-zum</a>.<br>
+    Lizenz: <a href="https://creativecommons.org/licenses/by/3.0/de/" target="_blank">CC BY 3.0 DE</a>,
+    zuletzt aktualisiert am 22.04.2021.
+wahllokale_berlin:
+  header: Wahllokale Berlin 2024
+  body: |
+    Berlin Open Data: Senatsverwaltung für Wirtschaft, Energie und Betriebe<br>
+    Geometrien der Wahllokale für die Wahlen zum Abgeordnetenhaus von Berlin 2023<br>
+    Online verfügbar unter <a href="https://daten.berlin.de/datensaetze/geometrien-der-wahllokale-f%C3%BCr-die-wahl-des-europ%C3%A4ischen-parlaments-berlin-2024" target="_blank">https://daten.berlin.de/datensaetze/geometrien-der-wahllokale-f%C3%BCr-die-wahl-des-europ%C3%A4ischen-parlaments-berlin-2024</a>.<br>
+    Lizenz: <a href="https://creativecommons.org/licenses/by/3.0/de/" target="_blank">CC BY 3.0 DE</a>,
+    zuletzt aktualisiert am 03.01.2023.
+btw:
+  header: Bundestagswahlkreise
+  body: |
+    Der Bundeswahlleiter, Statistisches Bundesamt, Wiesbaden 2020, Wahlkreiskarte für die Wahl zum 20. Deutschen Bundestag<br>
+    Grundlage der Geoinformationen © Geobasis-DE / BKG 2020<br>
+    Online verfügbar unter <a href="https://www.bundeswahlleiter.de/bundestagswahlen/2021/wahlkreiseinteilung/downloads.html" target="_blank">https://www.bundeswahlleiter.de/bundestagswahlen/2021/wahlkreiseinteilung/downloads.html</a>
+ltw:
+  header: Landtagswahlen
+bayern:
+  ltw_2023:
+    header: Landtagswahl 2023 Bayern
+    body: |
+      Die Stimmkreiseinteilung der Landtagswahl 2023 für Bayern wurden nach einer Anfrage bereitgestellt vom der Landeswahlleiterin des Freistaates Bayern, Stand 03. April 2023.
+      <a href="https://fragdenstaat.de/anfrage/geometrien-der-stimmkreiseinteilung-zur-landtagswahl-2023-in-bayern/" target="_blank">https://fragdenstaat.de/anfrage/geometrien-der-stimmkreiseinteilung-zur-landtagswahl-2023-in-bayern/</a>
+sachsen:
+  ltw_2024:
+    header: Landtagswahl 2024 Sachsen
+    body: |
+      Die Stimmkreiseinteilung der Landtagswahl 2024 für Sachsen wurden nach einer Anfrage bereitgestellt vom dem Büro des Landeswahlleiters, Stand 20. November 2023.<br>
+      Lizenz: <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank">Datenlizenz Deutschland – Namensnennung – Version 2.0</a> Verwaltungsatlas Sachsen

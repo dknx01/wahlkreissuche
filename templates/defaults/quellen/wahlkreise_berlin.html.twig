@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header" id="headingAreas">
+        <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                    data-target="#collapseAreas" aria-expanded="true" aria-controls="collapseAreas">
+                <h5>{{ 'wahlkreise_berlin.header'|trans({}, 'sources') }}</h5>
+            </button>
+        </h2>
+    </div>
+    <div id="collapseAreas" class="collapse" aria-labelledby="headingOne" data-parent="#sources">
+        <div class="card-body">
+            {{ 'wahlkreise_berlin.body'|trans({}, 'sources')|raw }}
+        </div>
+    </div>
+</div>

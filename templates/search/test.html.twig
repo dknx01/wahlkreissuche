@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/openlocationcode/1.0.3/openlocationcode.min.js"></script>
+    </head>
+    <body class="container-grey">
+    </body>
+    <script>
+        let code = "FH47+G5"
+        let data = OpenLocationCode.decode(code)
+        console.log(
+            OpenLocationCode.CodeArea
+        )
+    </script>
+</html>

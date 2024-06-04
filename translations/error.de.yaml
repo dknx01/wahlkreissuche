@@ -1,0 +1,10 @@
+error:
+  head: 'Wir haben einen Fehler entdeckt'
+  first_paragraph: 'Irgendjemand hat einen Fehler verursacht.'
+  second_paragraph: 'Wer auch immer das war, wir finden die Person. Bis dahin bitte unter der Bettdecke verstecken oder Plätzchen backen.'
+  third_paragraph: 'Wir kümmern uns darum, versprochen'
+404:
+  title: 'Dieser Weg ist versperrt'
+  first_paragraph: 'Die gesuchte Seite ist noch in der Produktion.'
+  second_paragraph: 'Wenn Sie diese trotzdem besuchen wollen, wenden Sie sich bitte an Ihren Koala. Er weiß alles und hilft Ihnen gern weiter.'
+  third_paragraph: 'Danke für Ihre Aufmerksamkeit'

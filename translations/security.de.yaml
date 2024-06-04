@@ -1,0 +1,26 @@
+login: Log in!
+title:
+  normal: Einloggen via Username und Passwort
+  link: 'Via Link'
+sign_in: 'Einloggen'
+loggin_in_as: 'Sie sind eingelogged als {{ username }}'
+logout: 'Logout'
+username: 'Username'
+password: 'Password'
+user:
+  index: 'Benutzerverwaltung'
+  show: 'anzeigen'
+  edit: 'bearbeiten'
+  not_found: 'Keine Einträge gefunden'
+  new: 'Neuer Benutzer'
+register: Jetzt registrieren
+send_link: 'Login-Link erstellen'
+e-mail: 'E-Mail'
+link_sent: 'Login-Link versendet'
+link_sent_title: 'Hallo,'
+access_denied:
+  generic: 'Es gibt ein Berechtigungsproblem mit dem Zugang'
+  not_active: 'Dieser Account ist nicht aktiviert. Bitte an den Admin wenden.'
+  not_verified: 'Die E-Mail-Adresse des Accounts wurde nicht verifiziert. Bitte im Postfach nachschauen und auf den dortigen Link klicken.'
+not_logged_in: 'Bitte einloggen'
+link_click: 'Bitte hier zum einloggen klicken'

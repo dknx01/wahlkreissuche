@@ -1,0 +1,47 @@
+city: Stadt
+city.help: Stadt, in der das Plakat gewünscht ist
+state: Bundesland
+state.help: Bundesland, in dem das Plakat gewünscht ist
+district: Bezirk/Stadtteil
+address: Adresse
+address.help: Eingabe einer Adresse (inkl. Stadt, eventuell PLZ)
+description: Beschreibung
+description.help: Genauere Beschreibung des Ortes oder hilfreiche Angaben
+longitude: Longitude Eingabe
+longitude.help: Wird automatisch ausgefüllt, oder manuelle Eingabe
+latitude: Latitude Eingabe
+latitude.help: Wird automatisch ausgefüllt, oder manuelle Eingabe
+map: Karte mit Wunschorten für Plakate
+list: Liste
+new: Neu
+createdAt: Gewünscht am
+edit:
+  title: Plakat bearbeiten
+  form:
+    address.help: Adresse des Wunschortes
+    district.help: Bezirk/Stadtteil des Wunschortes
+    description.help: Genauere Beschreibung des Ortes oder hilfreiche Angaben
+automatic_filled: Wird automatisch ausgefüllt
+overview_state: 'Wunschorte für Plakate in {state}'
+search_field: 'Suchen ...'
+table:
+  address: 'Adresse'
+  city: 'Ort'
+  description: 'Beschreibung'
+  createdAt: 'Gewünscht am'
+  createdBy: 'Gewünscht von'
+  active: 'aktiv'
+  deletedAt: 'Entfernt am'
+  district: 'Bezirk/Stadtteil'
+  state: 'Bundesland'
+active_only: 'Nur aktive'
+all: 'Alle Plakate'
+overview_my: 'Meine gewünschten Orte für Plakate'
+overview_all: 'Alle Wunschorte'
+new_title: 'Standort eines neuen gewünschten Plakatortes eintragen'
+hint:
+  no_gps: 'Bitte die Adresse manuel eingeben, da Geo-Location nicht verfügbar ist.'
+manual_input: 'Manuelle Adresseingabe'
+all-no-district:
+  title: 'Wunschorte für Plakate'
+title: 'Neue Wunschplakathängestelle hinzufügen'

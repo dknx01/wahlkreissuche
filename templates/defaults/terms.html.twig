@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'page_title'|trans}} - {{ 'terms'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="card-header">
+            {{ 'terms'|trans }}
+        </h1>
+        <p class="card-body">
+            {{ 'terms'|trans({}, 'terms')|raw }}
+        </p>
+    </div>
+{% endblock %}

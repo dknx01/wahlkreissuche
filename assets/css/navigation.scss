@@ -1,0 +1,60 @@
+@import "colors";
+@import "~bootstrap/scss/bootstrap.scss";
+
+.nav-pills .nav-link.active {
+  background-color: $partei-red;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $partei-red;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: $partei-red!important;
+}
+
+.nav-fill > .nav-link, .nav-fill .nav-item {
+  margin-left: 5px;
+}
+
+.nav-pills .active.help-btn {
+  @extend .nav-link.active;
+  background-color: $medium-signatures !important;
+  border-radius: 0 0.25em 0.25em 0;
+}
+nav-pills .nav-link, .nav-pills .help-btn {
+  @extend .nav-pills;
+  border-radius: 0 0.25rem 0.25em 0 !important;
+}
+.nav {
+  @extend .nav;
+  background-color: $gray-400;
+  border-radius: 0.5rem 0.5rem 0.5em 0.5rem !important;
+}
+.nav-link {
+  @extend .nav-link;
+  color: black;
+  font-weight: 500;
+}
+.nav-link:hover {
+  @extend .nav-link:hover;
+  color: $partei-red;
+  text-shadow: -2px -2px 1px $gray-100;
+}
+.dropdown-menu {
+  @extend .dropdown-menu;
+  background-color: $gray-200;
+}
+
+.nav .nav-item::after{
+  content: '';
+  display: block;
+  height: 4px;
+  background: $partei-red;
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+.nav .nav-item:hover:after{
+  transform: scaleX(1);
+  transition: transform .5s;
+}

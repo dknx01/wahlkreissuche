@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-7">
+        <ul class="nav nav-fill justify-content-center">
+{#            <li class="nav-item">#}
+{#                <a class="nav-link active" href="{{ path('add_plakat2') }}">{{ 'plakat_add'|trans({}, 'menu') }}</a>#}
+{#            </li>#}
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">{{ 'maps'|trans({}, 'menu') }}</a>
+                <div class="dropdown-menu">
+                    <div class="text-bold text-center">{{ 'berlin'|trans({}, 'menu') }}</div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"
+                       href="{{ path('plakate', {'city': 'Berlin', 'state': 'Berlin'}) }}">{{ 'plakat_map_menu'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item" href="{{ path('wahllokale_berlin') }}">{{ 'mapWahllokale'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item" href="{{ path('agh_kreise') }}">{{ 'mapAghKreise'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'berlin'}) }}">BTW {{ 'mapBtwKreiseBerlin'|trans({}, 'menu') }}</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="text-bold text-center">{{ 'plakat_map_menu'|trans({}, 'menu') }}</div>
+                    {% for state in poster_states() %}
+                        <a class="dropdown-item"
+                           href="{{ path('plakate_state', {'state': state.state}) }}">{{ state.state }}</a>
+                    {% endfor %}
+                    <div class="dropdown-divider"></div>
+                    <div class="text-bold text-center">{{ 'mapLTW'|trans({}, 'menu') }}</div>
+                    {% for ltw_state in ltw_states() %}
+                        <a class="dropdown-item"
+                           href="{{ path('ltw_kreise', {state: ltw_state.state}) }}">{{ ltw_state.state }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">{{ 'mapBtwKreiseTitle'|trans({}, 'menu') }}</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise_deutschland') }}">{{ 'mapBtwKreiseGermany'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'baden-württemberg'}) }}">{{ 'mapBtwKreiseBW'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'bayern'}) }}">{{ 'mapBtwKreiseBayern'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'berlin'}) }}">{{ 'mapBtwKreiseBerlin'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'brandenburg'}) }}">{{ 'mapBtwKreiseBrandenburg'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'bremen'}) }}">{{ 'mapBtwKreiseBremen'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'hamburg'}) }}">{{ 'mapBtwKreiseHH'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'hessen'}) }}">{{ 'mapBtwKreiseHessen'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'mecklenburg-vorpommern'}) }}">{{ 'mapBtwKreiseMv'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'niedersachsen'}) }}">{{ 'mapBtwKreiseNiedersachsen'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'nordrhein-westfalen'}) }}">{{ 'mapBtwKreiseNrw'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'rheinland-pfalz'}) }}">{{ 'mapBtwKreiseRp'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'saarland'}) }}">{{ 'mapBtwKreiseSaarland'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'sachsen'}) }}">{{ 'mapBtwKreiseSachsen'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'sachsen-anhalt'}) }}">{{ 'mapBtwKreiseSAnhalt'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'schleswig-holstein'}) }}">{{ 'mapBtwKreiseSH'|trans({}, 'menu') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ path('btw_kreise', {state: 'thüringen'}) }}">{{ 'mapBtwKreiseThüringen'|trans({}, 'menu') }}</a>
+                </div>
+            </li>
+            {% include 'layout/navigation/user.html.twig' %}
+            {% include 'layout/navigation/admin.html.twig' %}
+
+        </ul>
+    </div>
+</div>

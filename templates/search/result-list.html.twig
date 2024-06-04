@@ -1,0 +1,52 @@
+<div id="accordion">
+    {% for key, election_area in election_areas %}
+        <div class="card">
+{#                            {{ dump(election_area) }}#}
+            <div class="card-header" id="heading{{ key }}">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse"
+                            data-target="#collapse{{ key }}" aria-expanded="true"
+                            aria-controls="collapse{{ key }}">
+                        {{ key + 1 }}: {{ election_area.address.road }} {{ election_area.address.houseNumber }}
+                        , {{ election_area.address.postCode }} {{ election_area.address.city }} - {{ election_area.address.borough }}
+                        ({% if election_area.wahlkreis.type is same as 'AGH' %}{{ election_area.address.suburb }}{% else %}{{ election_area.wahlkreis.btw.stateName }}{% endif %})
+                    </button>
+                </h5>
+            </div>
+            <div id="collapse{{ key }}" class="collapse show"
+                 aria-labelledby="heading{{ key }}" data-parent="#accordion">
+                <div class="card-body">
+                    {{ _self.areaRow('street', election_area.address.road) }}
+                    {{ _self.areaRow('house_number', election_area.address.houseNumber) }}
+                    {{ _self.areaRow('zipCode', election_area.address.postCode) }}
+                    {{ _self.areaRow('district', election_area.address.borough) }}
+                    {{ _self.areaRow('suburb', election_area.address.suburb) }}
+                    {% if election_area.wahlkreis.agh %}
+                        {{ _self.areaRow('awk', election_area.wahlkreis.agh.wahlkreisShort) }}
+                        {{ _self.areaRow('uwk', election_area.wahlkreis.agh.bezirk) }}
+                    {% endif %}
+                    {% if election_area.wahlkreis.btw %}
+                        {{ _self.areaRow('Stadt', election_area.address.city) }}
+                        {{ _self.areaRow('BTW-Wahlkreisnummer', election_area.wahlkreis.btw.number) }}
+                        {{ _self.areaRow('BTW-Wahlkreis', election_area.wahlkreis.btw.name) }}
+                        {{ _self.areaRow('Bundesland', election_area.wahlkreis.btw.stateName) }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% macro areaRow(name, value, additional = null) %}
+    <dl class="row">
+        <dt class="col-sm-4">{{ name|trans({}, 'wahlkreis') }}</dt>
+        <dd class="col-sm-8">
+            {% if value is empty %}
+                <span class="badge badge-secondary">{{ 'not_result'|trans }}</span>
+            {% else %}
+                {{ value }}
+                {#                {{ value|wk_value(name, additional) }} #}
+            {% endif %}
+        </dd>
+    </dl>
+{% endmacro %}

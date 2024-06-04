@@ -1,0 +1,129 @@
+imports:
+    - configuration/twig.yaml
+    - configuration/symfony.yaml
+    - configuration/matoto.yaml
+    - configuration/geoJsonReader.yaml
+    - configuration/doctrine.yaml
+#    - configuration/vendor/twig.yaml
+#    -  configuration/deptrac.baseline.yml
+deptrac:
+  paths:
+    - ../src
+  exclude_files:
+    - '#.*test.*#'
+  layers:
+    - name: Controller
+      collectors:
+        - type: className
+          regex: '^App\\.*Controller$'
+    - name: Command
+      collectors:
+        - type: className
+          regex: 'App\\.*Command'
+    - name: Repository
+      collectors:
+        - type: directory
+          regex: 'Repository/.*'
+    - name: Entity
+      collectors:
+        - type: directory
+          regex: 'Entity/.*'
+    - name: GeoJsonReader
+      collectors:
+        - type: className
+          regex: '^App\\Service\\GeoJsonReader$'
+    - name: Options
+      collectors:
+        - type: className
+          regex: '^App\\Options\\.*$'
+    - name: FormTypes
+      collectors:
+        - type: className
+          regex: '^App\\Form\\.*Type$'
+    - name: ImageUploader
+      collectors:
+        - type: className
+          regex: '^App\\Service\\Domain\\ImageUploader$'
+    - name: ElectionServices
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: '^App\\Service\\Domain\\.*$'
+          must_not:
+            - type: className
+              regex: '^App\\Service\\Domain\\ImageUploader$'
+  ruleset:
+    Controller:
+      - Symfony-Http-Foundation
+      - Entity
+      - Repository
+      - Doctrine
+      - Options
+      - FormTypes
+      - ImageUploader
+      - ElectionServices
+    ElectionServices:
+      - BrickGeo
+      - Entity
+      - GeoJsonReader
+      - Repository
+#      - DomainService
+#    DomainService:
+#      - Repository
+    Entity:
+      - Symfony-Http-Foundation
+      - Doctrine
+      - Repository
+    Repository:
+      - BrickGeo
+      - Entity
+      - Doctrine
+    Command:
+      - BrickGeo
+      - Repository
+      - Entity
+      - ElectionServices
+    FormTypes:
+      - Options
+      - Entity
+      - Symfony-OptionsResolver
+      - Symfony-Form
+      - ElectionServices
+    ImageUploader:
+      - Symfony-Http-Foundation
+
+
+  formatters:
+    graphviz:
+      pointToGroups: true
+      groups:
+        Form:
+          - FormTypes
+        Controller:
+          - Controller
+        Cli:
+          - Command
+        Tracking:
+          - Matoto
+        Services:
+          - Options
+          - ImageUploader
+          - ElectionServices
+#          - DomainService
+        Database:
+          - Repository
+          - Entity
+        GeoData:
+          - GeoJsonReader
+        Twig-Extensions:
+          - TwigExtensions
+        Vendor:
+          - Doctrine
+          - DoctrineCommon
+          - Twig
+          - Symfony-Http-Foundation
+          - Symfony-Http-Foundation
+          - Symfony-Form
+          - Matoto-Lib
+          - BrickGeo

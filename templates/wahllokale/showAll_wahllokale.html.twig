@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'mapWahllokale' | trans({}, 'plakate') }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('stimulus_app') }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'mapWahllokale' | trans({}, 'plakate') }}</h1>
+    {% include 'snippets/loader.html.twig' %}
+
+    <div id="map" {{ stimulus_controller(
+        'plakate',
+        values
+    ) }}> {% include 'snippets/loader.html.twig' %}</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('stimulus_app') }}
+
+{% endblock %}

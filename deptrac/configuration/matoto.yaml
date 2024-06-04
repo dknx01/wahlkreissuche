@@ -1,0 +1,15 @@
+deptrac:
+  layers:
+    - name: Matoto
+      collectors:
+        - type: className
+          regex: '^App\\Service\\Tracking\\*'
+    - name: Matoto-Lib
+      collectors:
+        - type: className
+          regex: '^MatomoTracker$'
+  ruleset:
+    Matoto:
+      - Twig
+      - Symfony-Http-Foundation
+      - Matoto-Lib

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'login'|trans({}, 'security') }}{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="h3 mb-3 font-weight-normal">{{ 'title.normal'|trans({}, 'security') }}</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{{ path('app_login') }}">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        {% include 'layout/flash_messages.html.twig' %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                {{ 'loggin_in_as'|trans({'username': app.user.userIdentifier}, 'security') }}, <a href="{{ path('app_logout') }}">{{ 'logout'|trans({}, 'security') }}</a>
+                            </div>
+                        {% endif %}
+
+                        <label for="inputUsername">{{ 'username'|trans({}, 'security') }}</label>
+                        <input type="text" value="{{ last_username }}" name="_username" id="inputUsername" class="form-control" required autofocus>
+                        <label for="inputPassword">{{ 'password'|trans({}, 'security') }}</label>
+                        <input type="password" name="_password" id="inputPassword" class="form-control" required>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <input type="hidden" name="_target_path" value="{{ path('search') }}" />
+
+                        <button class="btn btn-lg btn-partei" type="submit">
+                            {{ 'sign_in'|trans({}, 'security') }}
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card-header">
+                    <h1 class="h3 mb-3 font-weight-normal">{{ 'title.link'|trans({}, 'security') }}</h1>
+                </div>
+                <div class="card-body">
+                    <form action="{{ path('login_link') }}" method="POST">
+                        <label for="email">{{ 'e-mail'|trans({}, 'security') }}</label>
+                        <input type="text" value="" name="email" id="email" class="form-control" required autofocus>
+                        <button class="btn btn-lg btn-partei" type="submit">
+                            {{ 'send_link'|trans({}, 'security') }}
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <a href="{{ path('app_register') }}">{{ 'register'|trans({}, 'security') }}</a>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

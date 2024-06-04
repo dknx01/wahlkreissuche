@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'all-no-district.title'|trans({}, 'plakate-wish')}}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('wishMapLeafletLayerState') }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'map'|trans({}, 'plakate-wish') }}</h1>
+    <div id="map"> </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('wishMapLeafletLayerState') }}
+    <script>
+let places = {
+    {% for district, placeDetails in places %}
+    '{{ district }}': [
+        {% for place in placeDetails %}
+        {
+            'long': {{ place.address.longitude }},
+            'lat': {{ place.address.latitude }},
+            'desc': "{{ place.description }}",
+            'district': "{{ place.address.district }}",
+            'edit': "{{ path('wish_plakat_admin_edit', {id: place.id}) }}",
+            'createdAt': "{{ place.createdAt|date('d.m.Y H:i') }}",
+            'createdBy': "{{ place.createdBy }}",
+            'thumbnail': "{{ thumbnail(place.thumbnailFileName) }}",
+        },
+        {% endfor %}
+    ],
+    {% endfor %}
+};
+{% set mapData =  state_center(state) %}
+let mapCenter = {
+    'zoom': {{ mapData.zoom }},
+    'lon': {{ mapData.lon }},
+    'lat': {{ mapData.lat }}
+}
+let wahllokaldata = [
+{% if wahllokale is defined %}
+    {% for wahllokal in wahllokale %}
+    {
+        "long": "{{ wahllokal.longitude }}",
+        "lat": "{{ wahllokal.latitude }}",
+        "radius": {{ wahllokal.radius }},
+        "description": "{{ wahllokal.description }}"
+    },
+    {% endfor %}
+{% endif %}
+]
+    </script>
+
+{% endblock %}

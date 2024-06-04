@@ -1,0 +1,13 @@
+deptrac:
+  layers:
+    - name: GeoJsonReader
+      collectors:
+        - type: className
+          regex: '^App\\Service\\GeoJsonReader$'
+    - name: BrickGeo
+      collectors:
+        - type: classLike
+          regex: '^Brick\\Geo\\.*$'
+  ruleset:
+    GeoJsonReader:
+      - BrickGeo

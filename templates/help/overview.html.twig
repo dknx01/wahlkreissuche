@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page_title.overview'|trans({}, 'help') }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="text-center">{{ 'page_title.overview'|trans({}, 'help') }}</h1>
+    <div class="row help-row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'search.title'|trans({}, 'help') }}</h5>
+                    <p class="card-text">{{ 'search.description'|trans({}, 'help') }}</p>
+                    <a href="{{path('help_search')}}" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'user.title'|trans({}, 'help') }}</h5>
+                    <p class="card-text">{{ 'user.description'|trans({}, 'help') }}</p>
+                    <a href="{{path('help_user')}}" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'maps.title'|trans({}, 'help') }}</h5>
+                    <p class="card-text">{{ 'maps.description'|trans({}, 'help') }}</p>
+                    <a href="{{path('help_maps')}}" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row help-row">
+{#        <div class="col-sm-4">#}
+{#            <div class="card">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">{{ 'posters.title'|trans({}, 'help') }}</h5>#}
+{#                    <p class="card-text">{{ 'posters.description'|trans({}, 'help') }}</p>#}
+{#                    <a href="#" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="col-sm-4">#}
+{#            <div class="card">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">{{ 'admin.title'|trans({}, 'help') }}</h5>#}
+{#                    <p class="card-text">{{ 'admin.description'|trans({}, 'help') }}</p>#}
+{#                    <a href="#" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="col-sm-4">#}
+{#            <div class="card">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">{{ 'misc.title'|trans({}, 'help') }}</h5>#}
+{#                    <p class="card-text">{{ 'misc.description'|trans({}, 'help') }}</p>#}
+{#                    <a href="#" class="wks-link stretched-link card-link">{{ 'go_there'|trans({}, 'help') }}</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+</div>
+{% endblock %}

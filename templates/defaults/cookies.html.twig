@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'page_title'|trans}} - {{ 'cookie'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+
+
+            <div class="card text-center">
+                <div class="card-header">
+                    {{ 'cookies.header'|trans({}, 'terms') }}
+                </div>
+                <div class="card-body">
+                    {{ 'cookies.body'|trans({}, 'terms')|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

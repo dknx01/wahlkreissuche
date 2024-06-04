@@ -1,0 +1,51 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '13'
+        types:
+            geography:            LongitudeOne\Spatial\DBAL\Types\GeographyType
+            geography_linestring: LongitudeOne\Spatial\DBAL\Types\Geography\LineStringType
+            geography_point:      LongitudeOne\Spatial\DBAL\Types\Geography\PointType
+            geography_polygon:    LongitudeOne\Spatial\DBAL\Types\Geography\PolygonType
+
+            geometry:            LongitudeOne\Spatial\DBAL\Types\GeometryType
+            geometry_linestring: LongitudeOne\Spatial\DBAL\Types\Geometry\LineStringType
+            geometry_point:      LongitudeOne\Spatial\DBAL\Types\Geometry\PointType
+            geometry_polygon:    LongitudeOne\Spatial\DBAL\Types\Geometry\PolygonType
+            geometry_multilinestring: LongitudeOne\Spatial\DBAL\Types\Geometry\MultiLineStringType
+            geometry_multipoint:      LongitudeOne\Spatial\DBAL\Types\Geometry\MultiPointType
+            geometry_multipolygon:    LongitudeOne\Spatial\DBAL\Types\Geometry\MultiPolygonType
+
+            uuid: Ramsey\Uuid\Doctrine\UuidType
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+        dql:
+            numeric_functions:
+                #Declare functions returning a numeric value
+                #A good practice is to prefix functions with ST when they are issue from the Standard directory
+                st_area: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\StArea
+                st_contains: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\StContains
+                st_within: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\StWithin
+            string_functions:
+                #Declare functions returning a string
+                st_envelope: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\STEnvelope
+                #Prefix functions with SP when they are not issue from the Standard directory is a good practice
+                sp_asgeojson: LongitudeOne\Spatial\ORM\Query\AST\Functions\Postgresql\SpAsGeoJson
+                #You can use the DQL function name you want and then use it in your DQL
+                st_centroid: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\StCentroid
+                st_mpolyfromwkb: LongitudeOne\Spatial\ORM\Query\AST\Functions\Standard\STMPolyFromWkb
+                #SELECT myDQLFunctionAlias(POLYGON(...
+                DATE_FORMAT: DoctrineExtensions\Query\Mysql\DateFormat
+                YEAR: DoctrineExtensions\Query\Mysql\Year

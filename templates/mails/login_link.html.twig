@@ -1,0 +1,9 @@
+<h1>{{ 'login_link.hello'|trans({}, 'mail') }}</h1>
+
+<p>
+    {{ 'login_link.body'|trans({'{{ signedUrl }}': signedUrl}, 'mail')|raw }}
+</p>
+
+<p>
+    {{ 'login_link.greeting'|trans({}, 'mail') }}
+</p>

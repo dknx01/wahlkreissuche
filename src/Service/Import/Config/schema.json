@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Wahlkreis import configuration",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "$comment": "Wahlkreis-Type z.B. LTW, AGH, BTW",
+      "enum": [
+        "LTW",
+        "BTW",
+        "AGH",
+        "LRW"
+      ],
+      "type": "string"
+    },
+    "state": {
+      "$comment": "Bundesland",
+      "type": "string",
+      "enum": [
+        "Baden-Württemberg",
+        "Bayern",
+        "Berlin",
+        "Brandenburg",
+        "Bremen",
+        "Hamburg",
+        "Hessen",
+        "Mecklenburg-Vorpommern",
+        "Niedersachsen",
+        "Nordrhein-Westfalen",
+        "Rheinland-Pfalz",
+        "Saarland",
+        "Sachsen",
+        "Sachsen-Anhalt",
+        "Schleswig-Holstein"
+      ]
+    },
+    "fields": {
+      "$comment": "Pfad innerhalb eines Features zu Feldern",
+      "type": "object",
+      "properties": {
+        "wk_nr": {
+          "$comment": "Wahlkreisnr-Feld",
+          "type": "string"
+        },
+        "wk_lon": {
+          "$comment": "Wahlkreis-Langbeschreibung-Feld",
+          "type": "string"
+        },
+        "wk_short": {
+          "$comment": "Wahlkreis-Kurzbeschreibung-Feld",
+          "type": "string"
+        },
+        "wk_name": {
+          "$comment": "Wahlkreis-Name-Feld",
+          "type": "string"
+        }
+      },
+      "required": [
+        "wk_nr",
+        "wk_name"
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "state",
+    "fields"
+  ]
+  }

@@ -1,0 +1,9 @@
+<h1>{{ 'register.mail.title'|trans({}, 'mail') }}</h1>
+
+<p>
+    {{ 'register.mail.body'|trans({'{{ signedUrl }}': signedUrl, '{{ expires }}': expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')}, 'mail')|raw }}
+</p>
+
+<p>
+    {{'register.mail.greeting'|trans({}, 'mail')}}
+</p>

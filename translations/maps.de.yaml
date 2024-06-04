@@ -1,0 +1,11 @@
+title: Neue Plakathängestelle hinzufügen
+form:
+  address: 'Adresse'
+error: 'Fehler'
+areas_btw_germany: 'Wahlkreise Bundestag Deutschland'
+areas_btw_state: 'Wahlkreise Bundestag {{state}}'
+areas_ltw_state: 'Wahlkreise Landtagswahl {{state}}'
+posters:
+  title: 'Gehangene Plakate'
+  with_wishes: 'mit Wunschorten'
+  without_wishes: 'ohne Wunschorte'
