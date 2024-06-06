@@ -16,7 +16,7 @@ RUN echo $TZ > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
     rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install fileinfo intl mbstring opcache pdo_mysql bcmath zip xml dom
+RUN docker-php-ext-install fileinfo intl mbstring opcache pdo_mysql bcmath zip xml dom sockets
 RUN mkdir /var/log/php && touch /var/log/php/php_errors.log && ln -sf /dev/stderr /var/log/php/php_errors.log
 
 # Install Composer

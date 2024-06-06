@@ -2,14 +2,17 @@
 
 namespace App\UnitTests\Twig\Menu;
 
+use App\EventListener\MobileDetectListener;
 use App\Options\BtwKreise;
 use App\Repository\ElectionPosterRepository;
 use App\Repository\WahlkreisRepository;
 use App\Repository\WishElectionPosterRepository;
 use App\Twig\Menu\MenuRuntime;
+use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class MenuRuntimeTest extends TestCase
@@ -106,5 +109,37 @@ class MenuRuntimeTest extends TestCase
             new RequestStack()
         );
         $this->assertSame($result, $runtime->getWishPosterStates());
+    }
+
+    #[TestWith([false, []])]
+    #[TestWith([false, ['isMobile' => MobileDetectListener::DESKTOP]])]
+    #[TestWith([false, ['isMobile' => MobileDetectListener::TABLET]])]
+    #[TestWith([true, ['isMobile' => MobileDetectListener::Mobile]])]
+    public function testIsMobile(bool $expected, array $attributes): void
+    {
+        $requestStack = new RequestStack();
+        $requestStack->push(new Request(attributes: $attributes));
+
+        $runtime = new MenuRuntime(
+            $this->repo->reveal(),
+            $this->wishRepo->reveal(),
+            $this->wahlkreisRepo->reveal(),
+            $requestStack
+        );
+        $this->assertSame($expected, $runtime->isMobile());
+    }
+
+    public function testGetLtwStates(): void
+    {
+        $result = ['Berlin' => 'Berlin', 'Bayern' => 'Bayern'];
+        $this->wahlkreisRepo->findAllStatesByType('LTW')->shouldBeCalledOnce()->willReturn($result);
+
+        $runtime = new MenuRuntime(
+            $this->repo->reveal(),
+            $this->wishRepo->reveal(),
+            $this->wahlkreisRepo->reveal(),
+            new RequestStack()
+        );
+        $this->assertSame($result, $runtime->getLtwStates());
     }
 }

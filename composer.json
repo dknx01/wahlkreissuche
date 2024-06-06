@@ -75,7 +75,9 @@
         "twig/twig": "^2.12 || ^3.0"
     },
     "require-dev": {
+        "ext-sockets": "*",
         "dbrekelmans/bdi": "^1.0",
+        "donatj/mock-webserver": "^2.7",
         "ergebnis/composer-normalize": "^2.28",
         "fakerphp/faker": "^1.19",
         "friendsofphp/php-cs-fixer": "^3.5",
