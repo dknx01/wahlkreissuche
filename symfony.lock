@@ -23,9 +23,6 @@
     "creof/wkb-parser": {
         "version": "v2.3.0"
     },
-    "dbrekelmans/bdi": {
-        "version": "1.0"
-    },
     "doctrine/annotations": {
         "version": "1.14",
         "recipe": {

@@ -1,0 +1,2 @@
+CREATE SCHEMA wahlkreissuche_test;
+grant alter, create, delete, drop, index, insert, lock tables, references, select, update on wahlkreissuche_test.* to wahlkreissuche;

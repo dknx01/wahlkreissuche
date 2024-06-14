@@ -3,9 +3,9 @@
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
          colors="true"
          bootstrap="tests/bootstrap.php"
+         defaultTestSuite="Project Unit Test Suite"
 >
     <php>
         <ini name="display_errors" value="1" />
@@ -18,25 +18,28 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Project Unit Test Suite">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Project Integration Test Suite">
+            <directory>tests/Integration</directory>
         </testsuite>
     </testsuites>
     <source>
-        <include><directory suffix=".php">src</directory></include>
+        <include><directory>src</directory></include>
         <exclude>
-            <directory suffix=".php">src/Entity</directory>
-            <directory suffix=".php">src/Repository</directory>
-            <directory suffix=".php">src/Controller</directory>
-            <directory suffix=".php">src/Command</directory>
-            <directory suffix=".php">src/Form</directory>
-            <directory suffix=".php">src/GeoJson</directory>
+            <directory>src/Entity</directory>
+            <directory>src/Repository</directory>
+            <directory>src/Controller</directory>
+            <directory>src/Command</directory>
+            <directory>src/Form</directory>
+            <directory>src/GeoJson</directory>
             <file>src/Kernel.php</file>
         </exclude>
     </source>
 
 
-    <coverage includeUncoveredFiles="true">
+    <coverage>
         <report>
             <html outputDirectory="./reports"/>
         </report>
